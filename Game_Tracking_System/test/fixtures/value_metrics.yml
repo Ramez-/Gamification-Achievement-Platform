@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  metric_id: 1
+  min: 1
+  start: 1
+  max: 1
+
+two:
+  metric_id: 1
+  min: 1
+  start: 1
+  max: 1

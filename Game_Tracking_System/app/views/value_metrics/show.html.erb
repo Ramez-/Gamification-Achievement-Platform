@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Metric:</strong>
+  <%= @value_metric.metric_id %>
+</p>
+
+<p>
+  <strong>Min:</strong>
+  <%= @value_metric.min %>
+</p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @value_metric.start %>
+</p>
+
+<p>
+  <strong>Max:</strong>
+  <%= @value_metric.max %>
+</p>
+
+<%= link_to 'Edit', edit_value_metric_path(@value_metric) %> |
+<%= link_to 'Back', value_metrics_path %>
