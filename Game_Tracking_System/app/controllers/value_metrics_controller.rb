@@ -25,14 +25,18 @@ class ValueMetricsController < ApplicationController
   # POST /value_metrics.json
   def create
     @value_metric = ValueMetric.new(value_metric_params)
-
-    respond_to do |format|
-      if @value_metric.save
-        format.html { redirect_to @value_metric, notice: 'Value metric was successfully created.' }
-        format.json { render :show, status: :created, location: @value_metric }
-      else
-        format.html { render :new }
-        format.json { render json: @value_metric.errors, status: :unprocessable_entity }
+    metric = Metric.new
+    metric.type = 1
+    if metric.save
+      @value_metric.metric_id = metric.id
+      respond_to do |format|
+        if @value_metric.save
+          format.html { redirect_to @value_metric, notice: 'Value metric was successfully created.' }
+          format.json { render :show, status: :created, location: @value_metric }
+        else
+          format.html { render :new }
+          format.json { render json: @value_metric.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -69,6 +73,6 @@ class ValueMetricsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def value_metric_params
-      params.require(:value_metric).permit(:metric_id, :min, :start, :max)
+      params.require(:value_metric).permit(:metric_id, :min, :start, :max, :name , :description)
     end
 end

@@ -5,7 +5,8 @@
 <table>
   <thead>
     <tr>
-      <th>Metric</th>
+      <th>Name</th>
+      <th>Description</th>
       <th>Min</th>
       <th>Start</th>
       <th>Max</th>
@@ -16,7 +17,8 @@
   <tbody>
     <% @value_metrics.each do |value_metric| %>
       <tr>
-        <td><%= value_metric.metric_id %></td>
+        <td><%= value_metric.name %></td>
+        <td><%= value_metric.description %></td>
         <td><%= value_metric.min %></td>
         <td><%= value_metric.start %></td>
         <td><%= value_metric.max %></td>

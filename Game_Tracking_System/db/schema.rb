@@ -11,11 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150405200525) do
+ActiveRecord::Schema.define(version: 20150406215001) do
 
   create_table "metrics", force: :cascade do |t|
-    t.integer "type"
+    t.integer "metric_type"
     t.integer "game_id"
+  end
+
+  create_table "state_metrics", force: :cascade do |t|
+    t.integer  "metric_id"
+    t.string   "name"
+    t.text     "description"
+    t.string   "state"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "value_metrics", force: :cascade do |t|

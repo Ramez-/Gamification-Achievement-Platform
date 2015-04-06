@@ -12,8 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :metric_id %><br>
-    <%= f.number_field :metric_id %>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
   </div>
   <div class="field">
     <%= f.label :min %><br>
