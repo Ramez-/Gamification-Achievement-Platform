@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<%= image_tag  @game.image.url(:thumb) %>
+<p>
+  <strong>Name:</strong>
+  <%= @game.name %>
+</p>
+
+<p>
+  <strong>Game:</strong>
+  <%= @game.game_id %>
+</p>
+
+<p>
+  <strong>Game timezone:</strong>
+  <%= @game.game_timezone %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @game.url %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @game.description %>
+</p>
+
+<%= link_to 'Edit', edit_game_path(@game) %> |
+<%= link_to 'Back', games_path %>
