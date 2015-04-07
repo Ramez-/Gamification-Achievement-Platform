@@ -1,0 +1,36 @@
+  <p id="notice"><%= notice %></p>
+
+<h1>Your Games</h1>
+<div class="row"> <!-- css to be implemented -->
+
+<% @games.each do |game| %>
+<table frame = "box">
+    <tr>
+      <th>Name</th>
+      <th><%= game.name %></th>
+      </tr>
+      <tr>
+      <th>Game ID</th>
+      <th><%= game.game_id %></th>
+      </tr>
+      <tr>
+      <th>Game timezone</th>
+      <th><%= game.game_timezone %></th>
+      </tr>
+      <tr>
+      <th>URL</th>
+      <th><p>/game-id/<%= game.game_id %></p></th>
+      </tr>
+      <tr>
+      </tr>
+    <td><%= link_to 'more', game %></td>
+    <br>
+    <br>
+ <% end %>
+ </div>
+  
+</table>
+<br>
+<%= link_to 'Add Game', new_game_path %>
+
+<br>

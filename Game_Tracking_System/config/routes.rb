@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+
   resources :state_metrics
+
   resources :value_metrics
+
+  resources :games
+  get '/game-id/:game_id' => 'games#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
