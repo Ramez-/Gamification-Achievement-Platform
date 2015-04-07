@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<%= image_tag  @game.image.url(:thumb) %>
 <p>
   <strong>Name:</strong>
   <%= @game.name %>
@@ -19,12 +20,6 @@
   <strong>Url:</strong>
   <%= @game.url %>
 </p>
-
-<p>
-  <strong>Logo:</strong>
-  <%= @game.logo %>
-</p>
-
 <p>
   <strong>Description:</strong>
   <%= @game.description %>
