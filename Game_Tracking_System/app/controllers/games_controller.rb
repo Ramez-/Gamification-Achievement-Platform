@@ -4,7 +4,15 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.json
   def index
-    @games = Game.all
+    if params[:game_id]
+      @games = Game.where(game_id: params[:game_id])
+    else
+      @games = Game.all
+    end
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml { render xml: @games}
+    end
   end
 
   # GET /games/1
