@@ -6,6 +6,7 @@ one:
   game_timezone: MyString
   url: MyString
   logo: MyString
+  description: MyString
 
 two:
   name: MyString
@@ -13,3 +14,4 @@ two:
   game_timezone: MyString
   url: MyString
   logo: MyString
+  description: MyString
