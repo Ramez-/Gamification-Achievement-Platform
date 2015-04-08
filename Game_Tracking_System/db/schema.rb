@@ -10,7 +10,6 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-
 ActiveRecord::Schema.define(version: 20150406181509) do
 
   create_table "events", force: :cascade do |t|
@@ -23,5 +22,17 @@ ActiveRecord::Schema.define(version: 20150406181509) do
   end
 
   add_index "events", ["event_id"], name: "index_events_on_event_id", unique: true
+
+
+  create_table "games", force: :cascade do |t|
+    t.string   "name"
+    t.string   "game_id"
+    t.string   "game_timezone"
+    t.string   "url"
+    t.string   "logo"
+    t.string   "description"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
 end
