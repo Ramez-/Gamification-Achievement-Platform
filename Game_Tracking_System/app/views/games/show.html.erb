@@ -24,6 +24,53 @@
   <strong>Description:</strong>
   <%= @game.description %>
 </p>
+<% if @value_metrics.count > 0 %>
+<div>
+  <h5>Value Metrics for game:</h5>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Min</th>
+      <th>Max</th>
+      <th>Start</th>
+    </tr> 
+    <% @value_metrics.each do |v| %>
+    <tr>
+      <td><%= v.name %></td>
+      <td><%= v.description %></td>
+      <td><%= v.min %></td>
+      <td><%= v.max %></td>
+      <td><%= v.start %></td>
+    <% end %>  
+    </tr>
+    </tr>
+  </table>
+</div>
+<% end %>
+
+<% if @state_metrics.count > 0 %>
+<div>
+  <h5>State Metrics for game:</h5>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Min</th>
+      <th>Max</th>
+      <th>Start</th>
+    </tr> 
+    <% @state_metrics.each do |v| %>
+    <tr>
+      <td><%= v.name %></td>
+      <td><%= v.description %></td>
+      <td><%= v.state %></td>
+    <% end %>  
+    </tr>
+    </tr>
+  </table>
+</div>
+<% end %>
 
 <%= link_to 'Add a value metric' , new_game_value_metric_path(@game) %>
 
