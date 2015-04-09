@@ -1,4 +1,4 @@
-<%= form_for(@value_metric) do |f| %>
+<%= form_for([@game ,@value_metric]) do |f| %>
   <% if @value_metric.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@value_metric.errors.count, "error") %> prohibited this value_metric from being saved:</h2>

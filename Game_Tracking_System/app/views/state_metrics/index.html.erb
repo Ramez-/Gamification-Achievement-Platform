@@ -18,9 +18,9 @@
         <td><%= state_metric.name %></td>
         <td><%= state_metric.description %></td>
         <td><%= state_metric.state %></td>
-        <td><%= link_to 'Show', state_metric %></td>
-        <td><%= link_to 'Edit', edit_state_metric_path(state_metric) %></td>
-        <td><%= link_to 'Destroy', state_metric, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', [@game , state_metric] %></td>
+        <td><%= link_to 'Edit', edit_game_state_metric_path(@game , state_metric) %></td>
+        <td><%= link_to 'Destroy', [@game , state_metric], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,10 +1,10 @@
 class StateMetricsController < ApplicationController
   before_action :set_state_metric, only: [:show, :edit, :update, :destroy]
-
+  before_action :get_game
   # GET /state_metrics
   # GET /state_metrics.json
   def index
-    @state_metrics = StateMetric.all
+    @state_metrics = @game.state_metrics
   end
 
   # GET /state_metrics/1
@@ -12,9 +12,12 @@ class StateMetricsController < ApplicationController
   def show
   end
 
+  def get_game
+    @game = Game.find(params[:game_id])
+  end
   # GET /state_metrics/new
   def new
-    @state_metric = StateMetric.new
+    @state_metric = @game.state_metrics.new
   end
 
   # GET /state_metrics/1/edit
@@ -24,9 +27,10 @@ class StateMetricsController < ApplicationController
   # POST /state_metrics
   # POST /state_metrics.json
   def create
-    @state_metric = StateMetric.new(state_metric_params)
+    @state_metric = @game.state_metrics.new(state_metric_params)
     metric = Metric.new
-    metric.type = 2
+    metric.metric_type = 2
+    metric.game_id = @game.id
     if metric.save
       @state_metric.metric_id = metric.id
       respond_to do |format|
@@ -58,9 +62,10 @@ class StateMetricsController < ApplicationController
   # DELETE /state_metrics/1
   # DELETE /state_metrics/1.json
   def destroy
+    Metric.find_by_metric_id(@state_metric.id).destroy
     @state_metric.destroy
     respond_to do |format|
-      format.html { redirect_to state_metrics_url, notice: 'State metric was successfully destroyed.' }
+      format.html { redirect_to @game, notice: 'State metric was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -68,11 +73,12 @@ class StateMetricsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_state_metric
-      @state_metric = StateMetric.find(params[:id])
+      @game = Game.find(params[:game_id])
+      @state_metric = @game.state_metrics.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def state_metric_params
-      params.require(:state_metric).permit(:metric_id, :name, :description, :state)
+      params.require(:state_metric).permit(:name, :description, :state)
     end
 end

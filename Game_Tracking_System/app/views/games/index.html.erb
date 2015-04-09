@@ -22,6 +22,7 @@
       <th><p>/game-id/<%= game.game_id %></p></th>
       </tr>
       <tr>
+        <%= link_to 'Delete' , game_path(game) , data: {confirmation: 'Are You Sure?'} , method: :delete %>
       </tr>
     <td><%= link_to 'more', game %></td>
     <br>
