@@ -23,7 +23,7 @@
       </tr>
       <tr>
       </tr>
-    <td><%= link_to 'more', game %></td>
+    <td><%= link_to 'more', [@user , game] %></td>
     <br>
     <br>
  <% end %>
@@ -31,6 +31,6 @@
   
 </table>
 <br>
-<%= link_to 'Add Game', new_game_path %>
+<%= link_to 'Add Game', new_user_game_path %>
 
 <br>
