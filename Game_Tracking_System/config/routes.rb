@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get 'tracker/index'
+
   resources :games
   get '/game-id/:game_id' => 'games#index'
   # The priority is based upon order of creation: first created -> highest priority.
