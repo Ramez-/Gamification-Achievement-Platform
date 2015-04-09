@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< Updated upstream
-ActiveRecord::Schema.define(version: 20150405170803) do
-=======
-ActiveRecord::Schema.define(version: 20150407231858) do
->>>>>>> Stashed changes
+ActiveRecord::Schema.define(version: 20150408144259) do
 
   create_table "games", force: :cascade do |t|
     t.string   "name"
@@ -36,12 +32,14 @@ ActiveRecord::Schema.define(version: 20150407231858) do
   end
 
   create_table "rules", force: :cascade do |t|
-    t.string   "metric"
     t.string   "value"
     t.string   "operation"
-    t.integer  "type"
+    t.integer  "mtype"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "metric_id"
   end
+
+  add_index "rules", ["metric_id"], name: "index_rules_on_metric_id"
 
 end

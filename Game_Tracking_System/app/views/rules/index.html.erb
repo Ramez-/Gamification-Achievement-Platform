@@ -5,10 +5,9 @@
 <table>
   <thead>
     <tr>
-      <th>Metric</th>
       <th>Value</th>
       <th>Operation</th>
-      <th>Type</th>
+      <th>Mtype</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +15,9 @@
   <tbody>
     <% @rules.each do |rule| %>
       <tr>
-        <td><%= rule.metric %></td>
         <td><%= rule.value %></td>
         <td><%= rule.operation %></td>
-        <td><%= rule.type %></td>
+        <td><%= rule.mtype %></td>
         <td><%= link_to 'Show', rule %></td>
         <td><%= link_to 'Edit', edit_rule_path(rule) %></td>
         <td><%= link_to 'Destroy', rule, method: :delete, data: { confirm: 'Are you sure?' } %></td>

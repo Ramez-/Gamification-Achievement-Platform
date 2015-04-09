@@ -18,7 +18,7 @@ class RulesControllerTest < ActionController::TestCase
 
   test "should create rule" do
     assert_difference('Rule.count') do
-      post :create, rule: { metric: @rule.metric, operation: @rule.operation, type: @rule.type, value: @rule.value }
+      post :create, rule: { mtype: @rule.mtype, operation: @rule.operation, value: @rule.value }
     end
 
     assert_redirected_to rule_path(assigns(:rule))
@@ -35,7 +35,7 @@ class RulesControllerTest < ActionController::TestCase
   end
 
   test "should update rule" do
-    patch :update, id: @rule, rule: { metric: @rule.metric, operation: @rule.operation, type: @rule.type, value: @rule.value }
+    patch :update, id: @rule, rule: { mtype: @rule.mtype, operation: @rule.operation, value: @rule.value }
     assert_redirected_to rule_path(assigns(:rule))
   end
 

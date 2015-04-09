@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :rules
+  resources :rules
   resources :metrics
   resources :games
   # The priority is based upon order of creation: first created -> highest priority.
