@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
 
   devise_for :users
-
-  resources :games
+  
   get '/game-id/:game_id' => 'games#index'
+
+  resources :users do
+    resources :games
+  end
+
+  # resources :user
+  #   resources :game
+  # end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
