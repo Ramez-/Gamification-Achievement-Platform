@@ -20,7 +20,7 @@
 
 <div class="field">
     <%= f.label :operation %><br>
-    <%= f.collection_select :operation, ['>','<','=','<=','>= '], :to_s, :to_s, include_blank: false %>
+    <%= f.collection_select :operation, ['>','<','<=','>=','=','!='], :to_s, :to_s, include_blank: false %>
 
  <!--   <%= f.text_field :operation %> -->
   </div>
