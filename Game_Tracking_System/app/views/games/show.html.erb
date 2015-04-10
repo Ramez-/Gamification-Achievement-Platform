@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+
 <%= image_tag  @game.photo.url(:thumb) %>
 <p>
   <strong>Name:</strong>
@@ -20,10 +21,12 @@
   <strong>Url:</strong>
   <%= @game.url %>
 </p>
+
 <p>
   <strong>Description:</strong>
   <%= @game.description %>
 </p>
+
 
 <%= link_to 'Edit', edit_user_game_path(@user , @game) %> |
 <%= link_to 'Back', user_games_path %>

@@ -1,6 +1,8 @@
 class GamesController < ApplicationController
+
   before_action :set_game, only: [:show, :edit, :update]
   before_action :get_user
+
   # GET /games
   # GET /games.json
   def index

@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
 
+
+  resources :events
+
+  resources :games
+
+
   devise_for :users
   
+
   get '/game-id/:game_id' => 'games#index'
 
   resources :users do
