@@ -72,9 +72,9 @@
 </div>
 <% end %>
 
-<%= link_to 'Add a value metric' , new_game_value_metric_path(@game) %>
+<%= link_to 'Add a value metric' , new_user_game_value_metric_path(@user ,@game) %>
 
-<%= link_to 'Add a state metric' , new_game_state_metric_path(@game) %>
+<%= link_to 'Add a state metric' , new_user_game_state_metric_path(@user ,@game) %>
 
 <%= link_to 'Edit', edit_user_game_path(@user , @game) %> |
 <%= link_to 'Back', user_games_path %>

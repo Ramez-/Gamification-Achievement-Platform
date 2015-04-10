@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+
+  devise_for :users
+
+
   resources :users do
     resources :games do
       resources :state_metrics
@@ -7,9 +12,6 @@ Rails.application.routes.draw do
   end
 
   get '/game-id/:game_id' => 'games#index'
-
-  devise_for :users
-
   # resources :user
   #   resources :game
   # end
