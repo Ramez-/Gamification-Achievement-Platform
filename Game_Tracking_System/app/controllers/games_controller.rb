@@ -1,19 +1,21 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: [:show, :edit, :update, :destroy]
+
+  before_action :set_game, only: [:show, :edit, :update]
+  before_action :get_user
+
   # GET /games
   # GET /games.json
   def index
-    if params[:game_id]
-      @games = Game.where(game_id: params[:game_id])
-    else
-      @games = Game.all
-    end
+      @games = @user.games
     respond_to do |format|
       format.html # index.html.erb
       format.xml { render xml: @games}
     end
   end
 
+  def get_user
+    @user = User.find(params[:user_id])
+  end
   # GET /games/1
   # GET /games/1.json
   def show
@@ -21,7 +23,7 @@ class GamesController < ApplicationController
 
   # GET /games/new
   def new
-    @game = Game.new
+    @game = @user.games.new
   end
 
   # GET /games/1/edit
@@ -31,11 +33,11 @@ class GamesController < ApplicationController
   # POST /games
   # POST /games.json
   def create
-    @game = Game.new(game_params)
+    @game = @user.games.new(game_params)
 
     respond_to do |format|
       if @game.save
-        format.html { redirect_to @game, notice: 'Game was successfully created.' }
+        format.html { redirect_to [@user , @game], notice: 'Game was successfully created.' }
         format.json { render :show, status: :created, location: @game }
       else
         format.html { render :new }
@@ -49,7 +51,7 @@ class GamesController < ApplicationController
   def update
     respond_to do |format|
       if @game.update(game_params)
-        format.html { redirect_to @game, notice: 'Game was successfully updated.' }
+        format.html { redirect_to [@user, @game], notice: 'Game was successfully updated.' }
         format.json { render :show, status: :ok, location: @game }
       else
         format.html { render :edit }
@@ -62,7 +64,8 @@ class GamesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_game
-      @game = Game.find(params[:id])
+      @user = User.find(params[:user_id])
+      @game = @user.games.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
