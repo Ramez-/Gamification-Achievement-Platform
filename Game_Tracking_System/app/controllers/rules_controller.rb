@@ -5,6 +5,7 @@ class RulesController < ApplicationController
   # GET /rules.json
   def index
     @rules = Rule.all
+
   end
 
   # GET /rules/1
@@ -25,7 +26,9 @@ class RulesController < ApplicationController
   # POST /rules.json
   def create
     @rule = Rule.new(rule_params)
-
+    @vara = @rule.metric_id
+    metric = Metric.find(@vara)
+    @rule.mtype= metric.metric_type
     respond_to do |format|
       if @rule.save
         format.html { redirect_to @rule, notice: 'Rule was successfully created.' }
