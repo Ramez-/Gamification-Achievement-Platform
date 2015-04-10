@@ -25,7 +25,6 @@ class MetricsController < ApplicationController
   # POST /metrics.json
   def create
     @metric = Metric.new(metric_params)
-
     respond_to do |format|
       if @metric.save
         format.html { redirect_to @metric, notice: 'Metric was successfully created.' }
@@ -69,6 +68,6 @@ class MetricsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def metric_params
-      params.require(:metric).permit(:name, :value)
+      params.require(:metric).permit(:type ,:name)
     end
 end

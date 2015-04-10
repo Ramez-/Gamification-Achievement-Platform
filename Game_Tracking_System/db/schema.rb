@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150408144259) do
+ActiveRecord::Schema.define(version: 20150410003422) do
 
   create_table "games", force: :cascade do |t|
     t.string   "name"
@@ -20,15 +20,19 @@ ActiveRecord::Schema.define(version: 20150408144259) do
     t.string   "url"
     t.string   "logo"
     t.string   "description"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "metrics", force: :cascade do |t|
-    t.string   "name"
-    t.string   "value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "metric_type"
+    t.integer "game_id"
+    t.integer "metric_id"
+    t.string  "name"
   end
 
   create_table "rules", force: :cascade do |t|
@@ -41,5 +45,27 @@ ActiveRecord::Schema.define(version: 20150408144259) do
   end
 
   add_index "rules", ["metric_id"], name: "index_rules_on_metric_id"
+
+  create_table "state_metrics", force: :cascade do |t|
+    t.integer  "metric_id"
+    t.string   "name"
+    t.text     "description"
+    t.string   "state"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "game_id"
+  end
+
+  create_table "value_metrics", force: :cascade do |t|
+    t.integer  "metric_id"
+    t.integer  "min"
+    t.integer  "start",       default: 0
+    t.integer  "max"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "name"
+    t.text     "description"
+    t.integer  "game_id"
+  end
 
 end

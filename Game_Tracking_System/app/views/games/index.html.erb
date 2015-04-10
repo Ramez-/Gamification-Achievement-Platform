@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 
 <h1>Your Games</h1>
 <div class="row"> <!-- css to be implemented -->
@@ -18,11 +18,12 @@
       <th><%= game.game_timezone %></th>
       </tr>
       <tr>
-      <th>Url</th>
-      <th><%= game.url %></th>
+      <th>URL</th>
+      <th><p>/game-id/<%= game.game_id %></p></th>
       </tr>
-      <th>Logo</th> 
-    </tr>
+      <tr>
+        <%= link_to 'Delete' , game_path(game) , data: {confirmation: 'Are You Sure?'} , method: :delete %>
+      </tr>
     <td><%= link_to 'more', game %></td>
     <br>
     <br>

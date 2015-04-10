@@ -1,15 +1,25 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: [:show, :edit, :update]
+  before_action :set_game, only: [:show, :edit, :update, :destroy]
 
   # GET /games
   # GET /games.json
   def index
-    @games = Game.all
+    if params[:game_id]
+      @games = Game.where(game_id: params[:game_id])
+    else
+      @games = Game.all
+    end
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml { render xml: @games}
+    end
   end
 
   # GET /games/1
   # GET /games/1.json
   def show
+    @value_metrics = @game.value_metrics
+    @state_metrics = @game.state_metrics
   end
 
   # GET /games/new
@@ -51,6 +61,14 @@ class GamesController < ApplicationController
     end
   end
 
+  def destroy
+    @game.destroy
+    respond_to do |format|
+      format.html { redirect_to games_url , notice: 'Game was successfully deleted.' }
+      format.json { head :no_content }
+    end
+  end 
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -60,6 +78,6 @@ class GamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
-      params.require(:game).permit(:name, :game_id, :game_timezone, :url, :logo, :description)
+      params.require(:game).permit(:name, :game_id, :game_timezone, :url, :logo, :description, :photo)
     end
 end
