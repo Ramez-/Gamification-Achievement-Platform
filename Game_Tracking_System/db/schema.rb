@@ -93,4 +93,15 @@ ActiveRecord::Schema.define(version: 20150408235906) do
   add_index "views", ["email"], name: "index_views_on_email", unique: true
   add_index "views", ["reset_password_token"], name: "index_views_on_reset_password_token", unique: true
 
+    create_table "events", force: :cascade do |t|
+    t.string   "name"
+    t.string   "event_id"
+    t.text     "event_description"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "metric_id"
+  end
+
+  add_index "events", ["event_id"], name: "index_events_on_event_id", unique: true
+
 end

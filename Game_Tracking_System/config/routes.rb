@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
 
-
   devise_for :users
-
 
   resources :users do
     resources :games do
       resources :state_metrics
       resources :value_metrics
+      resources :events
     end
   end
 
