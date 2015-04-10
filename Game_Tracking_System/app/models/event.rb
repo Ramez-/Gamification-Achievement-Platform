@@ -5,4 +5,5 @@ class Event < ActiveRecord::Base
      validates :event_id,
            presence: true,
            uniqueness: true
+    belongs_to :game
 end

@@ -19,6 +19,7 @@ class GamesController < ApplicationController
   def show
     @value_metrics = @game.value_metrics
     @state_metrics = @game.state_metrics
+    @events = @game.events
   end
 
   # GET /games/new

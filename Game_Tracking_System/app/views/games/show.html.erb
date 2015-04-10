@@ -72,9 +72,33 @@
 </div>
 <% end %>
 
+<% if @events.count > 0 %>
+<div>
+  <h5>Operations for game:</h5>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>ID</th>
+    </tr> 
+    <% @events.each do |v| %>
+    <tr>
+      <td><%= v.name %></td>
+      <td><%= v.event_description %></td>
+      <td><%= v.event_id %></td>
+    <% end %>  
+    </tr>
+    </tr>
+  </table>
+</div>
+<% end %>
+
+
 <%= link_to 'Add a value metric' , new_user_game_value_metric_path(@user ,@game) %>
 
 <%= link_to 'Add a state metric' , new_user_game_state_metric_path(@user ,@game) %>
+
+<%= link_to 'Add a Operation' , new_user_game_event_path(@user ,@game) %>
 
 <%= link_to 'Edit', edit_user_game_path(@user , @game) %> |
 <%= link_to 'Back', user_games_path %>

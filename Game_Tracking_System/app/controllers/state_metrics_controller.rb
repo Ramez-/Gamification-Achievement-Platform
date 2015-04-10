@@ -36,7 +36,7 @@ class StateMetricsController < ApplicationController
       @state_metric.metric_id = metric.id
       respond_to do |format|
         if @state_metric.save
-         format.html { redirect_to [@game , @value_metric], notice: 'State metric was successfully created.' }
+         format.html { redirect_to  [@user , @game, @state_metric], notice: 'State metric was successfully created.' }
           format.json { render :show, status: :created, location: @state_metric }
         else
           format.html { render :new }
@@ -51,7 +51,7 @@ class StateMetricsController < ApplicationController
   def update
     respond_to do |format|
       if @state_metric.update(state_metric_params)
-        format.html { redirect_to @state_metric, notice: 'State metric was successfully updated.' }
+        format.html { redirect_to  [@user , @game, @state_metric], notice: 'State metric was successfully updated.' }
         format.json { render :show, status: :ok, location: @state_metric }
       else
         format.html { render :edit }
