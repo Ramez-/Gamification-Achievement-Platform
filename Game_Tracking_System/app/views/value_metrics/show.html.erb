@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+	<strong>
+		Name:
+	</strong>
+	<%= @value_metric.name %>
+</p>
+
+<p>
+	<strong>
+		Description:
+	</strong>
+	<%= @value_metric.description %>
+</p>
+
+<p>
+  <strong>Min:</strong>
+  <%= @value_metric.min %>
+</p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @value_metric.start %>
+</p>
+
+<p>
+  <strong>Max:</strong>
+  <%= @value_metric.max %>
+</p>
+
+<%= link_to 'Edit', edit_user_game_value_metric_path(@user , @game , @value_metric) %> |
+<%= link_to 'Back', user_game_value_metrics_path %>
