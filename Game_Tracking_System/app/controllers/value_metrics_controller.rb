@@ -1,6 +1,6 @@
 class ValueMetricsController < ApplicationController
   before_action :set_value_metric, only: [:show, :edit, :update, :destroy]
-  before_action :get_game
+  before_action :get_user_game
   # GET /value_metrics
   # GET /value_metrics.json
   def index
@@ -12,8 +12,9 @@ class ValueMetricsController < ApplicationController
   def show
   end
 
-  def get_game
-    @game = Game.find(params[:game_id])
+  def get_user_game
+    @user = User.find(params[:user_id])
+    @game = @user.games.find(params[:game_id])
   end
 
   # GET /value_metrics/new
@@ -39,7 +40,7 @@ class ValueMetricsController < ApplicationController
       if @value_metric.save
         metric.metric_id = @value_metric.id
         metric.save
-        format.html { redirect_to [@game, @value_metric] , notice: 'Value metric was successfully created.' }
+        format.html { redirect_to [@user , @game, @value_metric] , notice: 'Value metric was successfully created.' }
         format.json { render :show, status: :created, location: @value_metric }
       else
         format.html { render :new }
@@ -53,7 +54,7 @@ class ValueMetricsController < ApplicationController
   def update
     respond_to do |format|
       if @value_metric.update(value_metric_params)
-        format.html { redirect_to [@game , @value_metric], notice: 'Value metric was successfully updated.' }
+        format.html { redirect_to [@user , @game , @value_metric], notice: 'Value metric was successfully updated.' }
         format.json { render :show, status: :ok, location: @value_metric }
       else
         format.html { render :edit }
@@ -77,7 +78,8 @@ class ValueMetricsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_value_metric
-      @game = Game.find(params[:game_id])
+      @user = User.find(params[:user_id])
+      @game = @user.games.find(params[:game_id])
       @value_metric = @game.value_metrics.find(params[:id])
     end
 

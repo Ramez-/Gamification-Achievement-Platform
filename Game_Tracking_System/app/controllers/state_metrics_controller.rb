@@ -1,6 +1,6 @@
 class StateMetricsController < ApplicationController
   before_action :set_state_metric, only: [:show, :edit, :update, :destroy]
-  before_action :get_game
+  before_action :get_user_game
   # GET /state_metrics
   # GET /state_metrics.json
   def index
@@ -12,8 +12,9 @@ class StateMetricsController < ApplicationController
   def show
   end
 
-  def get_game
-    @game = Game.find(params[:game_id])
+  def get_user_game
+    @user = User.find(params[:user_id])
+    @game = @user.games.find(params[:game_id])
   end
   # GET /state_metrics/new
   def new
@@ -36,7 +37,7 @@ class StateMetricsController < ApplicationController
       @state_metric.metric_id = metric.id
       respond_to do |format|
         if @state_metric.save
-         format.html { redirect_to [@game , @value_metric], notice: 'State metric was successfully created.' }
+         format.html { redirect_to  [@user , @game, @state_metric], notice: 'State metric was successfully created.' }
           format.json { render :show, status: :created, location: @state_metric }
         else
           format.html { render :new }
@@ -51,7 +52,7 @@ class StateMetricsController < ApplicationController
   def update
     respond_to do |format|
       if @state_metric.update(state_metric_params)
-        format.html { redirect_to @state_metric, notice: 'State metric was successfully updated.' }
+        format.html { redirect_to  [@user , @game, @state_metric], notice: 'State metric was successfully updated.' }
         format.json { render :show, status: :ok, location: @state_metric }
       else
         format.html { render :edit }
@@ -74,7 +75,8 @@ class StateMetricsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_state_metric
-      @game = Game.find(params[:game_id])
+      @user = User.find(params[:user_id])
+      @game = @user.games.find(params[:game_id])
       @state_metric = @game.state_metrics.find(params[:id])
     end
 

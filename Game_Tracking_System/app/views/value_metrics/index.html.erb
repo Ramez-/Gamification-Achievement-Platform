@@ -22,9 +22,9 @@
         <td><%= value_metric.min %></td>
         <td><%= value_metric.start %></td>
         <td><%= value_metric.max %></td>
-        <td><%= link_to 'Show', [@game , value_metric] %></td>
-        <td><%= link_to 'Edit', edit_game_value_metric_path(@game , value_metric) %></td>
-        <td><%= link_to 'Destroy', [@game , value_metric] , data: { confirm: 'Are you sure?' } , method: :delete %></td>
+        <td><%= link_to 'Show', [@user , @game , value_metric] %></td>
+        <td><%= link_to 'Edit', edit_user_game_value_metric_path(@user , @game , value_metric) %></td>
+        <td><%= link_to 'Destroy', [@user , @game , value_metric] , data: { confirm: 'Are you sure?' } , method: :delete %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Value metric', new_game_value_metric_path %>
+<%= link_to 'New Value metric', new_user_game_value_metric_path %>

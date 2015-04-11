@@ -1,7 +1,6 @@
 
 <p id="notice"><%= notice %></p>
 
-
 <%= image_tag  @game.photo.url(:thumb) %>
 <p>
   <strong>Name:</strong>
@@ -22,13 +21,85 @@
   <strong>Url:</strong>
   <%= @game.url %>
 </p>
-
 <p>
   <strong>Description:</strong>
   <%= @game.description %>
 </p>
+<% if @value_metrics.count > 0 %>
+<div>
+  <h5>Value Metrics for game:</h5>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Min</th>
+      <th>Max</th>
+      <th>Start</th>
+    </tr> 
+    <% @value_metrics.each do |v| %>
+    <tr>
+      <td><%= v.name %></td>
+      <td><%= v.description %></td>
+      <td><%= v.min %></td>
+      <td><%= v.max %></td>
+      <td><%= v.start %></td>
+    <% end %>  
+    </tr>
+    </tr>
+  </table>
+</div>
+<% end %>
 
+<% if @state_metrics.count > 0 %>
+<div>
+  <h5>State Metrics for game:</h5>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Min</th>
+      <th>Max</th>
+      <th>Start</th>
+    </tr> 
+    <% @state_metrics.each do |v| %>
+    <tr>
+      <td><%= v.name %></td>
+      <td><%= v.description %></td>
+      <td><%= v.state %></td>
+    <% end %>  
+    </tr>
+    </tr>
+  </table>
+</div>
+<% end %>
+
+<% if @events.count > 0 %>
+<div>
+  <h5>Operations for game:</h5>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>ID</th>
+    </tr> 
+    <% @events.each do |v| %>
+    <tr>
+      <td><%= v.name %></td>
+      <td><%= v.event_description %></td>
+      <td><%= v.event_id %></td>
+    <% end %>  
+    </tr>
+    </tr>
+  </table>
+</div>
+<% end %>
+
+
+<%= link_to 'Add a value metric' , new_user_game_value_metric_path(@user ,@game) %>
+
+<%= link_to 'Add a state metric' , new_user_game_state_metric_path(@user ,@game) %>
+
+<%= link_to 'Add a Operation' , new_user_game_event_path(@user ,@game) %>
 
 <%= link_to 'Edit', edit_user_game_path(@user , @game) %> |
 <%= link_to 'Back', user_games_path %>
-

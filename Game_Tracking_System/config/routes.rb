@@ -9,21 +9,17 @@ resources :games do
 
 
 
-
-  resources :events
-
-  resources :games
-
-
   devise_for :users
-  
-
-  get '/game-id/:game_id' => 'games#index'
 
   resources :users do
-    resources :games
+    resources :games do
+      resources :state_metrics
+      resources :value_metrics
+      resources :events
+    end
   end
 
+  get '/game-id/:game_id' => 'games#index'
   # resources :user
   #   resources :game
   # end
