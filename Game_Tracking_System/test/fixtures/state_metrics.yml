@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  metric_id: 1
+  name: MyString
+  description: MyText
+  state: MyString
+
+two:
+  metric_id: 1
+  name: MyString
+  description: MyText
+  state: MyString

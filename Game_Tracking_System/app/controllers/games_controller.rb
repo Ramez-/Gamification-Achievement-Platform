@@ -17,6 +17,9 @@ class GamesController < ApplicationController
   # GET /games/1
   # GET /games/1.json
   def show
+    @value_metrics = @game.value_metrics
+    @state_metrics = @game.state_metrics
+    @events = @game.events
   end
 
   # GET /games/new
@@ -58,6 +61,13 @@ class GamesController < ApplicationController
     end
   end
 
+  def destroy
+    @game.destroy
+    respond_to do |format|
+      format.html { redirect_to games_url , notice: 'Game was successfully deleted.' }
+      format.json { head :no_content }
+    end
+  end 
 
   private
     # Use callbacks to share common setup or constraints between actions.

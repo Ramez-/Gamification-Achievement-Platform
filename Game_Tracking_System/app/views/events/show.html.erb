@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Event Name:</strong>
+  <%= @event.name %>
+</p>
+
+<p>
+  <strong>Event ID:</strong>
+  <%= @event.event_id %>
+</p>
+
+<p>
+  <strong>Event description:</strong>
+  <%= @event.event_description %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_game_event_path(@user , @game ,@event) %> |
+<%= link_to 'Back', user_game_events_path %>
