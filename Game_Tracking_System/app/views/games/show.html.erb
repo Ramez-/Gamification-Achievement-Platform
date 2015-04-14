@@ -24,6 +24,7 @@
   <strong>Description:</strong>
   <%= @game.description %>
 </p>
+<% if @user == current_user %>
 <% if @value_metrics.count > 0 %>
 <div>
   <h5>Value Metrics for game:</h5>
@@ -101,4 +102,5 @@
 <%= link_to 'Add a Operation' , new_user_game_event_path(@user ,@game) %>
 
 <%= link_to 'Edit', edit_user_game_path(@user , @game) %> |
+<% end %>
 <%= link_to 'Back', user_games_path %>
