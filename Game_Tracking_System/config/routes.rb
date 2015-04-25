@@ -11,6 +11,7 @@
     end
   end
 
+
   get '/game-id/:game_id' => 'games#index'
   # resources :user
   #   resources :game
