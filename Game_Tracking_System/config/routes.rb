@@ -1,14 +1,9 @@
-Rails.application.routes.draw do
+  Rails.application.routes.draw do
+  root 'homepage#index'
+
   resources :rules
   resources :rules
   resources :metrics
-resources :games do
-    resources :state_metrics
-    resources :value_metrics
-  end
-
-
-
   devise_for :users
 
   resources :users do

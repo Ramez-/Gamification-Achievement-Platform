@@ -41,7 +41,8 @@ ActiveRecord::Schema.define(version: 20150410203002) do
     t.integer  "user_id"
   end
 
- 
+
+
   create_table "rules", force: :cascade do |t|
     t.string   "value"
     t.string   "operation"
@@ -54,12 +55,10 @@ ActiveRecord::Schema.define(version: 20150410203002) do
 
   add_index "rules", ["metric_id"], name: "index_rules_on_metric_id"
 
-
- create_table "metrics", force: :cascade do |t|
+  create_table "metrics", force: :cascade do |t|
     t.integer "metric_type"
     t.integer "game_id"
     t.integer "metric_id"
-    t.string  "name"
   end
 
   create_table "state_metrics", force: :cascade do |t|
@@ -71,7 +70,6 @@ ActiveRecord::Schema.define(version: 20150410203002) do
     t.datetime "updated_at",  null: false
     t.integer  "game_id"
   end
-
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -102,7 +100,6 @@ ActiveRecord::Schema.define(version: 20150410203002) do
     t.text     "description"
     t.integer  "game_id"
   end
-
 
   create_table "views", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
