@@ -20,7 +20,7 @@
 
 <div class="field">
     <%= f.label :operation %><br>
-    <%= f.collection_select :operation, ['>','<','<=','>=','=','!='], :to_s, :to_s, include_blank: false %>
+    <%= f.collection_select :operation, ['>','<','<=','>=','=','!='], :to_s, :to_s, include_blank: false , :class =>'dropdown-menu' %>
 
  <!--   <%= f.text_field :operation %> -->
   </div>
@@ -28,7 +28,7 @@
   
   <div class="field">
     <%= f.label :value %><br>
-    <%= f.text_field :value %>
+  <%= f.text_field :value  %>
   </div>
   
 <!-- 
@@ -38,15 +38,9 @@
  </div>
 -->
   <div class="actions">
-    <%= f.submit %>
+   <div> <%= f.submit  :class => 'btn btn-primary' %> </div>
   </div>
 
-<script type="text/javascript">
-  $('select').change(alert_me_test);
 
-  function alert_me_test(x){
-      
-  }
-</script> 
 
 <% end %>
