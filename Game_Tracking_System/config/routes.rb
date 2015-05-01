@@ -1,24 +1,21 @@
   Rails.application.routes.draw do
   
   root 'homepage#index'
-resources :requirements
-  resources :rules
-  resources :rules
-  resources :metrics
+
   devise_for :users
+  resources :metrics
 
   resources :users do
     resources :games do
       resources :state_metrics
       resources :value_metrics
       resources :events
+      resources :rules
       resources :requirements
       resources :players
-
     end
   end
 
-  get '/game-id/:game_id' => 'games#index'
   # resources :user
   #   resources :game
   # end

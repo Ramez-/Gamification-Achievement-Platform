@@ -11,6 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
+
 ActiveRecord::Schema.define(version: 20150501134033) do
 
 
@@ -79,7 +81,6 @@ ActiveRecord::Schema.define(version: 20150501134033) do
   end
 
   add_index "rules", ["metric_id"], name: "index_rules_on_metric_id"
-
 
 
   create_table "state_metrics", force: :cascade do |t|
