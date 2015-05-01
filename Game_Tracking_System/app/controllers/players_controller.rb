@@ -30,6 +30,7 @@ class PlayersController < ApplicationController
 
   # POST /players
   # POST /players.json
+  # creating new player then render to the this player page
   def create
     @player = Player.new(player_params)
 
@@ -49,6 +50,7 @@ class PlayersController < ApplicationController
 
   # DELETE /players/1
   # DELETE /players/1.json
+  # Deleting player then go then go to the players page
   def destroy
     @player.destroy
     respond_to do |format|
