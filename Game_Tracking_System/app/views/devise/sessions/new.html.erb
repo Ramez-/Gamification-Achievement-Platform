@@ -8,14 +8,14 @@
   <div class = "fields">
     <div class="field">
       <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true %>
+      <%= f.email_field :email, autofocus: true,:class => 'form-control' %>
     </div>
 
       <div class = "form"
       <div class="field">
           <%= f.label :password %><br />
           <div class="form-group">
-          <%= f.password_field :password, autocomplete: "off" %>
+          <%= f.password_field :password, autocomplete: "off",:class => 'form-control' %>
         </div>
       </div>
 
@@ -29,9 +29,9 @@
 
    
     <div class="actions"> 
-      <div class = "btn btn-success">
-      <%= f.submit "Log in"%>
-    </div>
+      <!-- <div class = "btn btn-success"> -->
+      <%= f.submit  "Log in", :class => 'btn btn-success' %>
+    <!-- </div> -->
   </div>
   
 <% end %>
