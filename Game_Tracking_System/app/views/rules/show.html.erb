@@ -1,36 +1,59 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @rule.name %>
-</p>
-
-<p>
-  <strong>Metric:</strong>
+  <strong  style="font-size:20px;">Metric :</strong>
 	<%= @vara = @rule.metric_id 
      metric = Metric.find(@vara) 
      metric.name %>
+
+     
 </p>
 
 
 <p>
-  <strong>Operation:</strong>
-  <%= @rule.operation %>
+  <strong  style="font-size:20px;">Operation :</strong>
+
+   <% if @rule.mtype == 1 %>
+        <td style="color:green">   <%= @rule.operation %></td>
+        <% else %>
+        <td style="color:blue">   <%= @rule.operation %></td>
+        <% end %>
 </p>
 
 
 <p>
-  <strong>Value:</strong>
-  <%= @rule.value %>
+  <strong  style="font-size:20px;">Value :</strong>
+ 
+  <% if @rule.mtype == 1 %>
+        <td style="color:green"> <%= @rule.value %></td>
+        <% else %>
+        <td style="color:blue"> <%= @rule.value %></td>
+        <% end %>
+
 </p>
 
 
 
 
 <p>
-  <strong>Metric Type</strong>
-  <%= @rule.mtype %>
+  <strong style="font-size:20px;">Metric Type :</strong>
+     <% if @rule.mtype == 1 %>
+        <td style="color:green">Value Metric</td>
+        <% else %>
+        <td style="color:blue">State Metric</td>
+        <% end %>
+
 </p>
 
+<<<<<<< HEAD
+<br>
+<br>
+<br>
+<br>
+
+<div class="btn btn-primary button"><%= link_to 'Edit', edit_rule_path(@rule) %> </div>
+<div class="btn btn-primary button"><%= link_to 'Back', rules_path %> </div>
+=======
 <%= link_to 'Edit', edit_user_game_rule_path(@user ,@game , @rule) %> |
 <%= link_to 'Back', user_game_rules_path %>
+>>>>>>> master
