@@ -1,6 +1,10 @@
   Rails.application.routes.draw do
+  
   root 'homepage#index'
-
+resources :requirements
+  resources :rules
+  resources :rules
+  resources :metrics
   devise_for :users
 
   resources :users do
@@ -8,7 +12,9 @@
       resources :state_metrics
       resources :value_metrics
       resources :events
+      resources :requirements
       resources :players
+
     end
   end
 

@@ -1,7 +1,6 @@
 require 'test_helper'
 
-class MetricsControllerTest < ActionController::TestCase
-
+class RuleTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

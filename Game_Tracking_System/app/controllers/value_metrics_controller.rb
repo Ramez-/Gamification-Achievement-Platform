@@ -43,6 +43,7 @@ class ValueMetricsController < ApplicationController
     metric = Metric.new
     metric.metric_type = 1
     metric.game_id = @game.id
+    metric.name = @value_metric.name
     metric.save
     @value_metric.metric_id = metric.id
     respond_to do |format|

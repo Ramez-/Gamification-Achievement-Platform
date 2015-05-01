@@ -90,3 +90,4 @@ class GamesController < ApplicationController
       params.require(:game).permit(:name, :game_id, :game_timezone, :url, :logo, :description, :photo)
     end
 end
+
