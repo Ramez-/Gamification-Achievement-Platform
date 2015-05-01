@@ -1,10 +1,16 @@
 class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :edit, :update, :destroy]
+  before_action :get_user_game
 
   # GET /players
   # GET /players.json
   def index
     @players = Player.all
+  end
+
+  def get_user_game
+    @user = User.find(params[:user_id])
+    @game = @user.games.find(params[:game_id])
   end
 
   # GET /players/1
@@ -28,7 +34,7 @@ class PlayersController < ApplicationController
 
     respond_to do |format|
       if @player.save
-        format.html { redirect_to @player, notice: 'Player was successfully created.' }
+        format.html { redirect_to [@user, @game, @player], notice: 'Player was successfully created.' }
         format.json { render :show, status: :created, location: @player }
       else
         format.html { render :new }
@@ -42,7 +48,7 @@ class PlayersController < ApplicationController
   def update
     respond_to do |format|
       if @player.update(player_params)
-        format.html { redirect_to @player, notice: 'Player was successfully updated.' }
+        format.html { redirect_to [@user, @game, @player], notice: 'Player was successfully updated.' }
         format.json { render :show, status: :ok, location: @player }
       else
         format.html { render :edit }
@@ -64,6 +70,8 @@ class PlayersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_player
+      @user = User.find(params[:user_id])
+      @game = @user.games.find(params[:game_id])
       @player = Player.find(params[:id])
     end
 
