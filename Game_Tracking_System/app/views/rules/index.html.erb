@@ -24,12 +24,16 @@
         <td><%= rule.operation %></td>
         <td><%= rule.value %></td>
 
+        <!-- 
+        Checking wheter its a value or state metric -->
+
         <% if rule.mtype == 1 %>
         <td style="color:green">Value Metric</td>
         <% else %>
         <td style="color:blue">State Metric</td>
         <% end %>
-
+        <!-- design the button -->
+        
         <td class="btn btn-primary button"><%= link_to 'Show', rule %></td>
         <td class="btn btn-primary button"><%= link_to 'Edit', edit_rule_path(rule) %></td>
         <td class="btn btn-danger button"><%= link_to 'Destroy', rule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
