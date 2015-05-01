@@ -20,6 +20,7 @@ class GamesController < ApplicationController
     @value_metrics = @game.value_metrics
     @state_metrics = @game.state_metrics
     @events = @game.events
+    @players = @game.players
   end
 
   # GET /games/new
@@ -81,3 +82,4 @@ class GamesController < ApplicationController
       params.require(:game).permit(:name, :game_id, :game_timezone, :url, :logo, :description, :photo)
     end
 end
+

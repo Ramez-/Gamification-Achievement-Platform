@@ -11,7 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150501171557) do
+
+ActiveRecord::Schema.define(version: 20150501134033) do
+
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -48,6 +50,7 @@ ActiveRecord::Schema.define(version: 20150501171557) do
     t.string  "name"
   end
 
+
   create_table "requirements", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -55,6 +58,12 @@ ActiveRecord::Schema.define(version: 20150501171557) do
     t.integer  "rule_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+
+  create_table "players", force: :cascade do |t|
+    t.string   "player_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+
   end
 
   create_table "rules", force: :cascade do |t|
@@ -66,6 +75,7 @@ ActiveRecord::Schema.define(version: 20150501171557) do
     t.integer  "metric_id"
     t.integer  "game_id"
     t.string   "name"
+
   end
 
   add_index "rules", ["metric_id"], name: "index_rules_on_metric_id"
