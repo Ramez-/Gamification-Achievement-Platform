@@ -1,6 +1,4 @@
   Rails.application.routes.draw do
-  resources :players
-  resources :players
   root 'homepage#index'
 
   devise_for :users
@@ -10,6 +8,7 @@
       resources :state_metrics
       resources :value_metrics
       resources :events
+      resources :players
     end
   end
 
