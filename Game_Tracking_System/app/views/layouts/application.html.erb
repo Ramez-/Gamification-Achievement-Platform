@@ -16,12 +16,6 @@
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
 
-<% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
-<% end %>
         <%= link_to "Simple play", "#", id: "logo" %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
@@ -38,11 +32,19 @@
       </div>
     </header>
     <br>
+
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+<br>
     <div class="container">
       <%= yield %>
 
     </div>
-    
+
   </body>
 </html>
 
