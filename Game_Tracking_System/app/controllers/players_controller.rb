@@ -1,9 +1,11 @@
+#this class represent the player 
 class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :edit, :update, :destroy]
   before_action :get_user_game
 
   # GET /players
   # GET /players.json
+  # for showing all players
   def index
     @players = Player.all
   end
@@ -24,8 +26,7 @@ class PlayersController < ApplicationController
   end
 
   # GET /players/1/edit
-  def edit
-  end
+ 
 
   # POST /players
   # POST /players.json
@@ -45,17 +46,6 @@ class PlayersController < ApplicationController
 
   # PATCH/PUT /players/1
   # PATCH/PUT /players/1.json
-  def update
-    respond_to do |format|
-      if @player.update(player_params)
-        format.html { redirect_to [@user, @game, @player], notice: 'Player was successfully updated.' }
-        format.json { render :show, status: :ok, location: @player }
-      else
-        format.html { render :edit }
-        format.json { render json: @player.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   # DELETE /players/1
   # DELETE /players/1.json
