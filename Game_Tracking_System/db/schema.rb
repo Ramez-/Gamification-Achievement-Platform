@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 20150501134033) do
     t.integer  "user_id"
   end
 
-
   create_table "metrics", force: :cascade do |t|
     t.integer "metric_type"
     t.integer "game_id"
@@ -66,7 +65,6 @@ ActiveRecord::Schema.define(version: 20150501134033) do
   end
 
   add_index "rules", ["metric_id"], name: "index_rules_on_metric_id"
-
 
   create_table "state_metrics", force: :cascade do |t|
     t.integer  "metric_id"
