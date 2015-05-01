@@ -1,0 +1,57 @@
+<%= form_for(@rule) do |f| %>
+  <% if @rule.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rule.errors.count, "error") %> prohibited this rule from being saved:</h2>
+
+      <ul>
+      <% @rule.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :metric_id %> <br>
+ 
+    <%= f.collection_select :metric_id, Metric.all,  :id , :name , { :selected => Metric.name }%> 
+
+  </div>
+
+<div class="field">
+    <%= f.label :operation %><br>
+    <%= f.collection_select :operation, ['>','<','<=','>=','=','!='], :to_s, :to_s, include_blank: false %>
+
+ <!--   <%= f.text_field :operation %> -->
+  </div>
+
+  
+  <div class="field">
+    <%= f.label :value %><br>
+    <%= f.text_field :value %>
+  </div>
+  
+<!-- 
+  <div class="field">
+    <%= f.label :mtype %><br>
+    <%= f.number_field :mtype %>
+ </div>
+-->
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<script type="text/javascript">
+  $('select').change(alert_me_test);
+
+  function alert_me_test(x){
+      
+  }
+</script> 
+
+<% end %>

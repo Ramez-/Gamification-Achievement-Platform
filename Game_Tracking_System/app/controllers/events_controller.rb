@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :get_user_game
+  before_action :check_auth
   # GET /events
   # GET /events.json
   def index
@@ -20,6 +21,12 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = @game.events.new
+  end
+
+  def check_auth 
+    if current_user == nil || @user.id != current_user.id
+      redirect_to root_path , alert: "Can't Access A Game That Does not belong to you."
+    end
   end
 
   # GET /events/1/edit
@@ -44,17 +51,6 @@ class EventsController < ApplicationController
 
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
-  def update
-    respond_to do |format|
-      if @event.update(event_params)
-        format.html { redirect_to  [@user , @game, @event], notice: 'Event was successfully updated.' }
-        format.json { render :show, status: :ok, location: @event }
-      else
-        format.html { render :edit }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   # DELETE /events/1
   # DELETE /events/1.json

@@ -1,6 +1,7 @@
 class StateMetricsController < ApplicationController
   before_action :set_state_metric, only: [:show, :edit, :update, :destroy]
   before_action :get_user_game
+  before_action :check_auth
   # GET /state_metrics
   # GET /state_metrics.json
   def index
@@ -21,6 +22,14 @@ class StateMetricsController < ApplicationController
     @state_metric = @game.state_metrics.new
   end
 
+
+  # Check if the current user is logged in and is the owner of the game
+  def check_auth
+    if current_user == nil || @user.id != current_user.id
+      redirect_to root_path , alert: "Can't Access A Game That Does not belong to you."
+    end
+  end
+
   # GET /state_metrics/1/edit
   def edit
   end
@@ -32,6 +41,7 @@ class StateMetricsController < ApplicationController
     metric = Metric.new
     metric.metric_type = 2
     metric.game_id = @game.id
+    metric.name = @state_metric.name
     if metric.save
       @state_metric.metric_id = metric.id
       respond_to do |format|
