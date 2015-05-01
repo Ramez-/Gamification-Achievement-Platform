@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150410203002) do
+ActiveRecord::Schema.define(version: 20150501134033) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -45,7 +45,26 @@ ActiveRecord::Schema.define(version: 20150410203002) do
     t.integer "metric_type"
     t.integer "game_id"
     t.integer "metric_id"
+    t.string  "name"
   end
+
+  create_table "players", force: :cascade do |t|
+    t.string   "player_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rules", force: :cascade do |t|
+    t.string   "value"
+    t.string   "operation"
+    t.integer  "mtype"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "metric_id"
+    t.integer  "game_id"
+  end
+
+  add_index "rules", ["metric_id"], name: "index_rules_on_metric_id"
 
   create_table "state_metrics", force: :cascade do |t|
     t.integer  "metric_id"
@@ -106,4 +125,3 @@ ActiveRecord::Schema.define(version: 20150410203002) do
   add_index "views", ["reset_password_token"], name: "index_views_on_reset_password_token", unique: true
 
 end
->>>>>>> master
