@@ -1,11 +1,11 @@
 class RulesController < ApplicationController
   before_action :set_rule, only: [:show, :edit, :update, :destroy]
-
+  before_action :get_user_game
+  before_action :check_auth
   # GET /rules
   # GET /rules.json
   def index
-    @rules = Rule.all
-
+    @rules = @game.rules
   end
 
   # GET /rules/1
@@ -15,7 +15,17 @@ class RulesController < ApplicationController
 
   # GET /rules/new
   def new
-    @rule = Rule.new
+    @rule = @game.rules.new
+  end
+
+  def check_auth
+    if current_user == nil || @user.id != current_user.id
+      redirect_to root_path , alert: "Can't Access A Game That Does not belong to you."
+  end
+
+  def get_user_game
+    @user = User.find(params[:user_id])
+    @game = @user.games.find(params[:game_id])
   end
 
   # GET /rules/1/edit
@@ -25,13 +35,13 @@ class RulesController < ApplicationController
   # POST /rules
   # POST /rules.json
   def create
-    @rule = Rule.new(rule_params)
+    @rule = @game.rules.new(rule_params)
     @vara = @rule.metric_id
     metric = Metric.find(@vara)
     @rule.mtype= metric.metric_type
     respond_to do |format|
       if @rule.save
-        format.html { redirect_to @rule, notice: 'Rule was successfully created.' }
+        format.html { redirect_to [@user , @game, @rule], notice: 'Rule was successfully created.' }
         format.json { render :show, status: :created, location: @rule }
       else
         format.html { render :new }
@@ -45,7 +55,7 @@ class RulesController < ApplicationController
   def update
     respond_to do |format|
       if @rule.update(rule_params)
-        format.html { redirect_to @rule, notice: 'Rule was successfully updated.' }
+        format.html { redirect_to [@user , @game, @rule], notice: 'Rule was successfully updated.' }
         format.json { render :show, status: :ok, location: @rule }
       else
         format.html { render :edit }
@@ -59,7 +69,7 @@ class RulesController < ApplicationController
   def destroy
     @rule.destroy
     respond_to do |format|
-      format.html { redirect_to rules_url, notice: 'Rule was successfully destroyed.' }
+      format.html { redirect_to @game, notice: 'Rule was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -67,7 +77,9 @@ class RulesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_rule
-      @rule = Rule.find(params[:id])
+      @user = User.find(params[:user_id])
+      @game = @user.games.find(params[:game_id])
+      @rule = @game.rules.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
