@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Name:</strong>
+  <%= @rule.name %>
+</p>
+
+<p>
   <strong>Metric:</strong>
 	<%= @vara = @rule.metric_id 
      metric = Metric.find(@vara) 

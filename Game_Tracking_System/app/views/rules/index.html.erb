@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Name</th>
       <th>Metric</th>
       <th>Operation</th>
       <th>Value</th>
@@ -16,6 +17,7 @@
   <tbody>
     <% @rules.each do |rule| %>
       <tr>
+         <td><%= rule.name %></td>
         <td><%= @vara = rule.metric_id 
      metric = Metric.find(@vara) 
      metric.name %></td>
