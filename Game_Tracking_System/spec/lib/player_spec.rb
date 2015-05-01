@@ -12,6 +12,7 @@ describe Player do
  it "is not named JIM" do
  	player = Player.new
  	player.player_id.should_not == "JIM"
+ 	
  end
  
 end
