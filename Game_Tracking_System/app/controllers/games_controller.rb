@@ -14,7 +14,7 @@ class GamesController < ApplicationController
 
 
   def check_auth
-    if @user.id != current_user.id
+    if @user.id != current_user.id || @user.id = nil
       redirect_to root_path , alert: "Can't Access A Game That Does not belong to you."
     end
   end

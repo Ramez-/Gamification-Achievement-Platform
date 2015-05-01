@@ -17,10 +17,6 @@ class MetricsController < ApplicationController
     @metric = Metric.new
   end
 
-  def check_auth
-    @user.check_auth
-  end
-
   # GET /metrics/1/edit
   def edit
   end
