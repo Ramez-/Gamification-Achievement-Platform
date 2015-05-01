@@ -93,7 +93,7 @@
 </div>
 <% end %>
 
-
+<%= button_to "My Players", user_game_players_path(@user, @game), :method => :get %>
 <%= link_to 'Add a value metric' , new_user_game_value_metric_path(@user ,@game) %>
 
 <%= link_to 'Add a state metric' , new_user_game_state_metric_path(@user ,@game) %>
