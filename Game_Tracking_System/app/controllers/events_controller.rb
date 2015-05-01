@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :get_user_game
+  before_action :check_auth
   # GET /events
   # GET /events.json
   def index
@@ -20,6 +21,12 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = @game.events.new
+  end
+
+  def check_auth
+    if @user.id != current_user.id
+      redirect_to root_path , alert: "Can't Access A Game That Does not belong to you."
+    end
   end
 
   # GET /events/1/edit

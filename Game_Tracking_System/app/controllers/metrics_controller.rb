@@ -1,6 +1,6 @@
 class MetricsController < ApplicationController
   before_action :set_metric, only: [:show, :edit, :update, :destroy]
-
+  before_action :check_auth
   # GET /metrics
   # GET /metrics.json
   def index
@@ -15,6 +15,10 @@ class MetricsController < ApplicationController
   # GET /metrics/new
   def new
     @metric = Metric.new
+  end
+
+  def check_auth
+    @user.check_auth
   end
 
   # GET /metrics/1/edit

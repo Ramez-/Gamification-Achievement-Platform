@@ -1,6 +1,7 @@
 class ValueMetricsController < ApplicationController
   before_action :set_value_metric, only: [:show, :edit, :update, :destroy]
   before_action :get_user_game
+  before_action :check_auth
   # GET /value_metrics
   # GET /value_metrics.json
   def index
@@ -21,6 +22,14 @@ class ValueMetricsController < ApplicationController
   def new
     @value_metric = @game.value_metrics.new
   end
+
+
+  def check_auth
+    if @user.id != current_user.id
+      redirect_to root_path , alert: "Can't Access A Game That Does not belong to you."
+    end
+  end
+
 
   # GET /value_metrics/1/edit
   def edit
