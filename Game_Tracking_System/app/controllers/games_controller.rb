@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :update]
   before_action :get_user
+  before_action :check_auth
   # GET /games
   # GET /games.json
   def index
@@ -8,6 +9,13 @@ class GamesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml { render xml: @games}
+    end
+  end
+
+  # Check if the current user is logged in and is the owner of the game
+  def check_auth
+    if current_user == nil || @user.id != current_user.id
+      redirect_to root_path , alert: "Can't Access A Game That Does not belong to you."
     end
   end
 
@@ -82,3 +90,5 @@ class GamesController < ApplicationController
       params.require(:game).permit(:name, :game_id, :game_timezone, :url, :logo, :description, :photo)
     end
 end
+
+>>>>>>> master
