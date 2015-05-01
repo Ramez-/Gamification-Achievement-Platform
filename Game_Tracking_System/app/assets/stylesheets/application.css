@@ -12,4 +12,8 @@
  *
  *= require_tree .
  *= require_self
+ *___________________________________________________________________________________________________________
+ * The horizontal navbar styling is here. The following code was referenced from a user on the following page
+ *http://forum.pagelines.com/topic/19823-gradient-color-in-navbar/
+ *To modify color: Either create a new gradient on site and replace with code below or just alter the hexa-values
  */
