@@ -23,7 +23,7 @@ class StateMetricsController < ApplicationController
   end
 
   def check_auth
-    if @user.id != current_user.id || @user.id = nil
+    if current_user == nil || @user.id != current_user.id
       redirect_to root_path , alert: "Can't Access A Game That Does not belong to you."
     end
   end
