@@ -1,67 +1,49 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>GameTrackingSystem</title>
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<!--<link href="GAS.css" rel="stylesheet">-->
-	
+  <head>
+    <title>Simple play</title>
+    <%= stylesheet_link_tag 'application', media: 'all',
+                                           'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+      </script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="mycustom.css">
+  </head>
+  <body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
 
- <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<%= yield %>
-<!-- Horizontal Navigation bar -->
-<div class="navbar">
-	    <div class="horizontalnavContainer">
-	            <ul id="navlist">
-		            <li id="hornav"><a id="home" href="#"><img id = "horizontalnavbuttons" src="homebutton.png"/> Home</a></li>
-		            <li id="hornav"><a id="games" href="#"><img id = "horizontalnavbuttons" src="gamebutton.png"/> Games</a></li>
-		            <li id="hornav"><a id="user" href="#"><img id = "horizontalnavbuttons" src="userbutton.png"/> UserName</a></li>
-		            <li id="hornav"><a id="settings" href="#"><img id = "horizontalnavbuttons" src="settbutton.png"/> Settings</a></li>
-		            <li id="hornav"><a href="#"><img id = "horizontalnavbuttons" src="logoutbutton.png"/> Logout</a><li>
-	            </ul>
-	    </div>
-</div>
-<!--Vertical Navigation bar-->
-<div class="vnavbar">
-	    <div class="vnavContainer">
-	            <ul id="navlist">
-		            <li id="vnav"><a id="vnavbuttons" href="#">Option</a></li>
-		            <li id="vnav"><a id="vnavbuttons" href="#">Option</a></li>
-		            <li id="vnav"><a id="vnavbuttons" href="#">Option</a></li>
-		            <li id="vnav"><a id="vnavbuttons" href="#">Option</a></li
-	            </ul>
-	    </div>
-</div>
-
-<!--Main Body of the Website-->
-<div id="header">
-
-
-</div>
-
-
-<!--Footer Section-->
-<div class ="footerarea">
-	
-<ul id="footerinfo">
-	<li id = "footernav"><a href="#"> About Us </a></li>
-	<li id = "footernav"><a href="#"> Contact </a></li>
-	<li id = "footernav"><a href="#"> Terms & Conditions</a></li>
-</ul>
-
-
-	<footer>
-		<section id="social-icons" style="float:right">
-		<ul class="icons">
-			<a href="#" class="fa fa-twitter solo"><span>Twitter</span></a>
-			&nbsp <a href="#" class="fa fa-facebook solo"><span>Facebook</span></a>
-			&nbsp <a href="#" class="fa fa-google-plus solo"><span>Google+</span></a>
-			&nbsp <a href="#" class="fa fa-linkedin solo"><span>LinkedIn</span></a>
-		</ul>
-		</section>
-	</footer>
-</div>
-</body>
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+        <%= link_to "Simple play", "#", id: "logo" %>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+          	<% if user_signed_in? %>
+          	   <li id="username"><%= current_user.email %></li>
+           	   <li>  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> </li>
+               <li> <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
+			<% else %>
+			 <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %></li>
+            <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
+			<% end %>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <br>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
 </html>
+
+<html>
+<head>
+<!--  -->
