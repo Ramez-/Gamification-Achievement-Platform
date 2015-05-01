@@ -48,7 +48,7 @@ h2 {
 }
 
 p {
-  font-size: 1.1em;
+ font-size: 1.1em;
   line-height: 1.7em;
 }
 
@@ -59,6 +59,7 @@ p {
 
 
 #logo {
+margin-top : 10px;
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
@@ -82,3 +83,42 @@ p {
 
 
 
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: black;
+}
+
+
+footer a {
+  color: #555;
+}
+
+footer a:hover {
+  color:white;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+	margin-top : 10px;
+	padding:10px;
+  float: left;
+  margin-left: 15px;
+}
+
+footer ul li a:link{
+	    text-decoration: none;
+
+}
