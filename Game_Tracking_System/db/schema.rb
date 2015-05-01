@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150501151245) do
+ActiveRecord::Schema.define(version: 20150501171557) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20150501151245) do
     t.integer "metric_type"
     t.integer "game_id"
     t.integer "metric_id"
+    t.string  "name"
   end
 
   create_table "requirements", force: :cascade do |t|
@@ -55,6 +56,19 @@ ActiveRecord::Schema.define(version: 20150501151245) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "rules", force: :cascade do |t|
+    t.string   "value"
+    t.string   "operation"
+    t.integer  "mtype"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "metric_id"
+    t.integer  "game_id"
+    t.string   "name"
+  end
+
+  add_index "rules", ["metric_id"], name: "index_rules_on_metric_id"
 
   create_table "state_metrics", force: :cascade do |t|
     t.integer  "metric_id"

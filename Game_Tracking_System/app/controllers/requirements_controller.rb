@@ -25,7 +25,6 @@ class RequirementsController < ApplicationController
   # POST /requirements.json
   def create
     @requirement = Requirement.new(requirement_params)
-
     respond_to do |format|
       if @requirement.save
         format.html { redirect_to @requirement, notice: 'Requirement was successfully created.' }

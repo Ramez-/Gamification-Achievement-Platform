@@ -21,11 +21,13 @@
   </div>
   <div class="field">
     <%= f.label :event_id %><br>
-    <%= f.number_field :event_id %>
+    
+    <%= f.collection_select :event_id, Event.all,  :id , :name , { :selected => Event.name }%> 
   </div>
   <div class="field">
     <%= f.label :rule_id %><br>
-    <%= f.number_field :rule_id %>
+    
+    <%= f.collection_select :rule_id, Rule.all,  :id , :name , { :selected => Rule.name }%> 
   </div>
   <div class="actions">
     <%= f.submit %>

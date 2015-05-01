@@ -32,6 +32,7 @@ class StateMetricsController < ApplicationController
     metric = Metric.new
     metric.metric_type = 2
     metric.game_id = @game.id
+    metric.name = @state_metric.name
     if metric.save
       @state_metric.metric_id = metric.id
       respond_to do |format|

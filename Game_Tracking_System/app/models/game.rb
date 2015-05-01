@@ -9,5 +9,6 @@ class Game < ActiveRecord::Base
 	has_many :state_metrics , dependent: :destroy
 	has_many :events , dependent: :destroy
 	belongs_to :user
+
 	
 end
