@@ -1,4 +1,5 @@
   Rails.application.routes.draw do
+  resources :requirements
   root 'homepage#index'
 
   devise_for :users
