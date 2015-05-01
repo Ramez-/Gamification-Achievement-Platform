@@ -11,6 +11,7 @@
       resources :state_metrics
       resources :value_metrics
       resources :events
+      resources :players
     end
   end
 
