@@ -1,6 +1,7 @@
 class RulesController < ApplicationController
   before_action :set_rule, only: [:show, :edit, :update, :destroy]
   before_action :get_user_game
+  before_action :check_auth
   # GET /rules
   # GET /rules.json
   def index
@@ -15,6 +16,11 @@ class RulesController < ApplicationController
   # GET /rules/new
   def new
     @rule = @game.rules.new
+  end
+
+  def check_auth
+    if current_user == nil || @user.id != current_user.id
+      redirect_to root_path , alert: "Can't Access A Game That Does not belong to you."
   end
 
   def get_user_game
