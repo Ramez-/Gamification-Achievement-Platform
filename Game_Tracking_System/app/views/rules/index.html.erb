@@ -25,7 +25,7 @@
      metric.name %></td>
         <td><%= rule.operation %></td>
         <td><%= rule.value %></td>
-<<<<<<< HEAD
+
 
         <!-- 
         Checking wheter its a value or state metric -->
@@ -37,15 +37,10 @@
         <% end %>
         <!-- design the button -->
         
-        <td class="btn btn-primary button"><%= link_to 'Show', rule %></td>
-        <td class="btn btn-primary button"><%= link_to 'Edit', edit_rule_path(rule) %></td>
-        <td class="btn btn-danger button"><%= link_to 'Destroy', rule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-=======
-        <td><%= rule.mtype %></td>
-        <td><%= link_to 'Show', [@user , @game , rule] %></td>
-        <td><%= link_to 'Edit', edit_user_game_rule_path(@user ,@game , rule) %></td>
-        <td><%= link_to 'Destroy', [@user ,@game , rule], method: :delete, data: { confirm: 'Are you sure?' } %></td>
->>>>>>> master
+        <td class="btn btn-primary button"><%= link_to 'Show', [@user , @game , rule]  %></td>
+        <td class="btn btn-primary button"><%= link_to 'Edit', edit_user_game_rule_path(@user ,@game , rule) %></td>
+        <td class="btn btn-danger button"><%= link_to 'Destroy', [@user ,@game , rule], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
       </tr>
     <% end %>
   </tbody>
@@ -55,10 +50,7 @@
 
 <br>
 
-<<<<<<< HEAD
 <div class="btn btn-success button">
-<%= link_to 'New Rule', new_rule_path %>
+<%= link_to 'New Rule', new_user_game_rule_path  %>
 </div>
-=======
-<%= link_to 'New Rule', new_user_game_rule_path %>
->>>>>>> master
+
