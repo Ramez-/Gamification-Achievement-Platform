@@ -8,7 +8,6 @@
 
 
 
-
 <% if user_signed_in? %>
 <%= button_to 'Check Your Games', user_games_path(current_user.id), class: "btn btn-primary", :method => "get" %>
 <% else %>
