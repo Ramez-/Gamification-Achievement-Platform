@@ -93,15 +93,38 @@
 </div>
 <% end %>
 
+
 <%= button_to "My Players", user_game_players_path(@user, @game), :method => :get %>
+
 <br>
+ 
+<div class="btn btn-primary button" style="margin-right:20px;">
 <%= link_to 'Add a value metric' , new_user_game_value_metric_path(@user ,@game) %>
+</div>
 
+
+<div class="btn btn-primary button" style="margin-right:20px;">
 <%= link_to 'Add a state metric' , new_user_game_state_metric_path(@user ,@game) %>
+</div>
 
+<div class="btn btn-primary button" style="margin-right:20px;">
+<%= link_to 'Add a rule' , user_game_rules_path(@user ,@game) %>
+</div>
+
+<div class="btn btn-primary button" style="margin-right:20px;">
 <%= link_to 'Add a Operation' , new_user_game_event_path(@user ,@game) %>
+</div>
+
+<div class="btn btn-primary button" style="margin-right:20px;">
 <%= link_to 'Add a player' , new_user_game_player_path(@user,@game) %>
+</div>
 
-<%= link_to 'Edit', edit_user_game_path(@user , @game) %> |
 
+<div class="btn btn-primary button" style="margin-right:20px;">
+<%= link_to 'Edit', edit_user_game_path(@user , @game) %> 
+</div>
+
+<div class="btn btn-primary button" style="margin-right:20px;">
 <%= link_to 'Back', user_games_path %>
+</div>
+</div>
