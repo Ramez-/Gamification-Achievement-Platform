@@ -2,8 +2,9 @@
 
 
 <h1>Your Games</h1>
-<div class="ro"> <!-- css to be implemented -->
+<div class="row"> <!-- css to be implemented -->
 <% @games.each do |game| %>
+<div class="col-sm-3">
 <table frame = "box">
     <tr>
       <th>Name</th>
@@ -27,9 +28,10 @@
     <br>
     <br>
 </table>
+</div>
 <% end %>
 </div>
 <br>
-<%= button_to "Add Game", new_user_game_path , class: "btn btn-primary", :method => "get" %>
-
 <br>
+<br>
+<%= button_to "Add Game", new_user_game_path , class: "btn btn-primary", :method => "get" %>
