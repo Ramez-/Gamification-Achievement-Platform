@@ -28,7 +28,7 @@
 <div class="col-sm-3">
 <% if @value_metrics.count > 0 %>
 <div>
-  <h5>Value Metrics</h5>
+  <strong>Value Metrics</strong>
   <table>
     <tr>
       <th>Name</th>
@@ -54,7 +54,7 @@
 <div class="col-sm-3">
 <% if @state_metrics.count > 0 %>
 <div>
-  <h5>State Metrics</h5>
+  <strong>State Metrics</strong>
   <table>
     <tr>
       <th>Name</th>
@@ -79,7 +79,7 @@
 
 <% if @events.count > 0 %>
 <div>
-  <h5>Operations</h5>
+  <strong>Operations</strong>
   <table>
     <tr>
       <th>Name</th>
@@ -129,5 +129,6 @@
 <br>
 <br>
 <%= button_to "Wanna edit your game", edit_user_game_path(@user , @game) , class: "btn btn-warning", :method => "get" %>
+
 
 
