@@ -1,12 +1,15 @@
+<div class="jumbotron">
 <h1>SimplePlay</h1>
+</div>
 <br>
+
+
 <p>SimplePlay is for every game developer who believes that achievement is a pain in the neck. We do the achievement system , you develop the game.</p>
 
 
 
-
 <% if user_signed_in? %>
-<p><%= link_to 'Check Your Games', user_games_path(current_user.id) %></p>
+<%= button_to 'Check Your Games', user_games_path(current_user.id), class: "btn btn-primary", :method => "get" %>
 <% else %>
 <p>Login now and enjoy programming</p>
 <% end %>

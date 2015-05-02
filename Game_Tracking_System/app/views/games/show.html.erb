@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
-
+<div class="row">
+<div class="col-sm-3">
 <%= image_tag  @game.photo.url(:thumb) %>
 <p>
-  <strong>Name:</strong>
-  <%= @game.name %>
+  <div class="name"><%= @game.name %></div>
 </p>
 
 <p>
-  <strong>Game:</strong>
+  <strong>Game ID :</strong>
   <%= @game.game_id %>
 </p>
 
@@ -24,9 +24,11 @@
   <strong>Description:</strong>
   <%= @game.description %>
 </p>
+</div>
+<div class="col-sm-3">
 <% if @value_metrics.count > 0 %>
 <div>
-  <h5>Value Metrics for game:</h5>
+  <strong>Value Metrics</strong>
   <table>
     <tr>
       <th>Name</th>
@@ -48,10 +50,11 @@
   </table>
 </div>
 <% end %>
-
+</div>
+<div class="col-sm-3">
 <% if @state_metrics.count > 0 %>
 <div>
-  <h5>State Metrics for game:</h5>
+  <strong>State Metrics</strong>
   <table>
     <tr>
       <th>Name</th>
@@ -71,10 +74,12 @@
   </table>
 </div>
 <% end %>
+</div>
+<div class="col-sm-3">
 
 <% if @events.count > 0 %>
 <div>
-  <h5>Operations for game:</h5>
+  <strong>Operations</strong>
   <table>
     <tr>
       <th>Name</th>
@@ -92,39 +97,38 @@
   </table>
 </div>
 <% end %>
+</div>
+</div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="row">
+<div class="col-sm-2">
+<%= button_to "Add Player", user_game_players_path(@user, @game) , class: "btn btn-primary", :method => "get" %>
+</div>
+<div class="col-sm-2">
+<%= button_to "Add value metric", new_user_game_value_metric_path(@user ,@game) , class: "btn btn-primary", :method => "get" %>
+</div>
 
+<div class="col-sm-2">
+<%= button_to "Add state metric", new_user_game_state_metric_path(@user ,@game) , class: "btn btn-primary", :method => "get" %>
+</div>
 
-<%= button_to "My Players", user_game_players_path(@user, @game), :method => :get %>
+<div class="col-sm-2">
+
+<%= button_to "Add Operation", new_user_game_event_path(@user ,@game) , class: "btn btn-primary", :method => "get" %>
+</div>
+</div>
 
 <br>
- 
-<div class="btn btn-primary button" style="margin-right:20px;">
-<%= link_to 'Add a value metric' , new_user_game_value_metric_path(@user ,@game) %>
-</div>
+<br>
+<br>
+<br>
+<%= button_to "Wanna edit your game", edit_user_game_path(@user , @game) , class: "btn btn-warning", :method => "get" %>
 
 
-<div class="btn btn-primary button" style="margin-right:20px;">
-<%= link_to 'Add a state metric' , new_user_game_state_metric_path(@user ,@game) %>
-</div>
 
-<div class="btn btn-primary button" style="margin-right:20px;">
-<%= link_to 'Add a rule' , user_game_rules_path(@user ,@game) %>
-</div>
-
-<div class="btn btn-primary button" style="margin-right:20px;">
-<%= link_to 'Add a Operation' , new_user_game_event_path(@user ,@game) %>
-</div>
-
-<div class="btn btn-primary button" style="margin-right:20px;">
-<%= link_to 'Add a player' , new_user_game_player_path(@user,@game) %>
-</div>
-
-
-<div class="btn btn-primary button" style="margin-right:20px;">
-<%= link_to 'Edit', edit_user_game_path(@user , @game) %> 
-</div>
-
-<div class="btn btn-primary button" style="margin-right:20px;">
-<%= link_to 'Back', user_games_path %>
-</div>
-</div>
