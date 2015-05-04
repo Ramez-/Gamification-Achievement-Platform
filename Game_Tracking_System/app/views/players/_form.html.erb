@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="forms.css">
 <%= form_for([@user ,@game ,@player]) do |f| %>
   <% if @player.errors.any? %>
     <div id="error_explanation">
@@ -10,12 +11,13 @@
       </ul>
     </div>
   <% end %>
-
+<div class = "left">
   <div class="field">
     <%= f.label :player_id %><br>
-    <%= f.text_field :player_id %>
+    <%= f.text_field :player_id,:class => 'form-control' %>
   </div>
+</div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => 'btn btn-primary'%>
   </div>
 <% end %>

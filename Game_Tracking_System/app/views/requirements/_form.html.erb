@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="forms.css">
 <%= form_for(@requirement) do |f| %>
   <% if @requirement.errors.any? %>
     <div id="error_explanation">
@@ -10,15 +11,16 @@
       </ul>
     </div>
   <% end %>
-
+<div class = "left">r
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name,:class => 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description,:class => 'form-control' %>
   </div>
+</div>
   <div class="field">
     <%= f.label :event_id %><br>
     
@@ -30,6 +32,6 @@
     <%= f.collection_select :rule_id, Rule.all,  :id , :name , { :selected => Rule.name }%> 
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => 'btn btn-primary'%>
   </div>
 <% end %>
